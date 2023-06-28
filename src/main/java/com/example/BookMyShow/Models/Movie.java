@@ -3,6 +3,7 @@ package com.example.BookMyShow.Models;
 import com.example.BookMyShow.Enums.Genre;
 import com.example.BookMyShow.Enums.Language;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "movies")
+@Data
 public class Movie {
 
     @Id
