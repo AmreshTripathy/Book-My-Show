@@ -5,7 +5,7 @@ import com.example.BookMyShow.Dtos.ResponseDtos.UserResponseDto;
 import com.example.BookMyShow.Exception.NoUserFoundException;
 import com.example.BookMyShow.Models.User;
 import com.example.BookMyShow.Repository.UserRepository;
-import com.example.BookMyShow.Transformers.UserTransformer;
+import com.example.BookMyShow.Transformers.UserTransformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public String addUser(AddUserDto userDto) {
-        User user = UserTransformer.convertDtoToEntity(userDto);
+        User user = UserTransformers.convertDtoToEntity(userDto);
 
         userRepository.save(user);
 
@@ -50,7 +50,7 @@ public class UserService {
 
         // We need to transform a userEntity to the UserResponseDto
 
-        return UserTransformer.convertEntityToDto(userAns);
+        return UserTransformers.convertEntityToDto(userAns);
     }
 
     public List<User> getAllUsersGreaterThan(Integer age) {

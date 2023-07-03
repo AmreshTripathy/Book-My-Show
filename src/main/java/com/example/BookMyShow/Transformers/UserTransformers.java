@@ -7,7 +7,7 @@ import com.example.BookMyShow.Models.User;
 /**
  * @author Amresh Tripathy
  */
-public class UserTransformer {
+public class UserTransformers {
 
     public static User convertDtoToEntity(AddUserDto userDto) {
         return User.builder().name(userDto.getName()).age(userDto.getAge()).mobNo(userDto.getMobNo()).emailId(userDto.getEmailId()).build();

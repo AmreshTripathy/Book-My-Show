@@ -5,7 +5,9 @@ import com.example.BookMyShow.Enums.Language;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Amresh Tripathy
@@ -35,5 +37,8 @@ public class Movie {
 
     @Enumerated(EnumType.STRING)
     private Language language;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<Show> showList = new ArrayList<>();
 
 }
