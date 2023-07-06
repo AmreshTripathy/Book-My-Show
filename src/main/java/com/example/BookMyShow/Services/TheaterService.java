@@ -78,7 +78,6 @@ public class TheaterService {
         // So automatically it is adding to the referenced memory (refer --> Swallow Concept in OOPs)
         theaterRepository.save(theater);
 
-
         return "Theater Seats have been successfully added";
     }
 }
