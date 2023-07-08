@@ -1,10 +1,15 @@
 package com.example.BookMyShow.Models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Amresh Tripathy
@@ -13,6 +18,9 @@ import java.util.Date;
 @Entity
 @Table(name = "shows")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Show {
 
     @Id
@@ -30,4 +38,7 @@ public class Show {
     @ManyToOne
     @JoinColumn
     private Theater theater;
+
+    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL)
+    List<ShowSeat> showSeatList = new ArrayList<>();
 }
