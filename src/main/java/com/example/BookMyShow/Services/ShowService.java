@@ -66,6 +66,7 @@ public class ShowService {
 
     public String associateShowSeats(ShowSeatDto showSeatDto) throws ShowNotFound {
         Optional<Show> optionalShow = showRepository.findById(showSeatDto.getShowId());
+
         if (optionalShow.isEmpty())
             throw new ShowNotFound("Show id is incorrect!");
 
