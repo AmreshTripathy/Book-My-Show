@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Amresh Tripathy
  */
@@ -31,4 +34,7 @@ public class User {
 
     @Column(unique = true)
     private String emailId;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Ticket> ticketList = new ArrayList<>();
 }
