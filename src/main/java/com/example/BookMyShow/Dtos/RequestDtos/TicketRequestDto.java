@@ -15,4 +15,6 @@ public class TicketRequestDto {
     private int userId;
 
     private List<String> requestedSeats;
+
+    private boolean foodAdded;
 }

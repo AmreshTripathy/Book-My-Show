@@ -3,8 +3,8 @@ package com.example.BookMyShow.Exception;
 /**
  * @author Amresh Tripathy
  */
-public class NoUserFoundException extends Exception {
-    public NoUserFoundException(String message) {
+public class UserNotFound extends Exception {
+    public UserNotFound(String message) {
         super(message);
     }
 }

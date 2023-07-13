@@ -1,6 +1,9 @@
 package com.example.BookMyShow.Dtos.ResponseDtos;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
 import java.util.Date;
@@ -10,6 +13,9 @@ import java.util.Date;
  */
 
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TicketResponseDto {
 
     private LocalTime showTime;
@@ -22,6 +28,10 @@ public class TicketResponseDto {
 
     private String bookedSeats;
 
+    private boolean foodAdded;
+
     private String location;
+
+    private int totalPrice;
 
 }

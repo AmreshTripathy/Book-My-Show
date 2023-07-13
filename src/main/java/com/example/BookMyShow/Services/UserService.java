@@ -2,7 +2,7 @@ package com.example.BookMyShow.Services;
 
 import com.example.BookMyShow.Dtos.RequestDtos.AddUserDto;
 import com.example.BookMyShow.Dtos.ResponseDtos.UserResponseDto;
-import com.example.BookMyShow.Exception.NoUserFoundException;
+import com.example.BookMyShow.Exception.UserNotFound;
 import com.example.BookMyShow.Models.User;
 import com.example.BookMyShow.Repository.UserRepository;
 import com.example.BookMyShow.Transformers.UserTransformers;
@@ -29,7 +29,7 @@ public class UserService {
         return "User has been added Successfully";
     }
 
-    public UserResponseDto getOldestUser() throws NoUserFoundException{
+    public UserResponseDto getOldestUser() throws UserNotFound {
         // prevents you from exposing Primary key
         // prevents infinite recursion
 
@@ -46,7 +46,7 @@ public class UserService {
         }
 
         if (userAns == null)
-            throw new NoUserFoundException("No User Found!");
+            throw new UserNotFound("No User Found!");
 
         // We need to transform a userEntity to the UserResponseDto
 
