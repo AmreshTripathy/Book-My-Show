@@ -13,6 +13,8 @@ import com.example.BookMyShow.Repository.TicketRepository;
 import com.example.BookMyShow.Repository.UserRepository;
 import com.example.BookMyShow.Transformers.TicketTransformers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +35,9 @@ public class TicketService {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private JavaMailSender emailSender;
 
     public TicketResponseDto bookTicket(TicketRequestDto ticketRequestDto) throws Exception {
 
@@ -83,6 +88,25 @@ public class TicketService {
         userRepository.save(user);
         showRepository.save(show);
 
+        String body = "Hi " + user.getName()  + "! \n" +
+                "You have successfully booked a ticket. Please find the following details below.\n" +
+                "Booked Seat No. - " + String.valueOf(ticketRequestDto.getRequestedSeats()).replace("[", "").replace("]", "") +  "\n" +
+                "Movie Name - " + show.getMovie().getMovieName() + "\n" +
+                "Show Date - " + show.getDate() + "\n" +
+                "Show Time - " + show.getTime() + "\n" +
+                "\n" +
+                "\n" +
+                "Enjoy The Show!!!";                ;
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+
+        mailMessage.setFrom("TestingEmailAmresh@gmail.com");
+        mailMessage.setTo(user.getEmailId());
+        mailMessage.setSubject("Ticket Confirmed");
+        mailMessage.setText(body);
+
+        emailSender.send(mailMessage);
+
         return TicketTransformers.convertEntityToDto(ticket, show);
     }
 
@@ -95,7 +119,6 @@ public class TicketService {
             if (requestedSeats.contains(seatNo) && !showSeat.isAvailable())
                 return false;
         }
-
 
         return true;
     }
