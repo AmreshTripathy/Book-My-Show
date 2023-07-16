@@ -44,7 +44,7 @@ public class ShowService {
             throw new MovieNotFound("Movie is not found!");
 
         Optional<Theater> theaterOptional = theaterRepository.findById(addShowDto.getTheaterId());
-        if(theaterOptional.isEmpty())
+        if (theaterOptional.isEmpty())
             throw new TheaterNotFound("Theater is not found!");
 
         Movie movie = movieOptional.get();
@@ -61,7 +61,7 @@ public class ShowService {
         movieRepository.save(movie);
         theaterRepository.save(theater);
 
-        return "Show has been added and show id is " + show.getId() ;
+        return "Show has been added and show id is " + show.getId();
     }
 
     public String associateShowSeats(ShowSeatDto showSeatDto) throws ShowNotFound {
@@ -87,7 +87,7 @@ public class ShowService {
             showSeat.setSeatNo(theaterSeat.getSeatNo());
             showSeat.setSeatType(theaterSeat.getSeatType());
 
-            if(showSeat.getSeatType().equals(SeatType.CLASSIC))
+            if (showSeat.getSeatType().equals(SeatType.CLASSIC))
                 showSeat.setPrice(showSeatDto.getPriceForClassicSeats());
             else
                 showSeat.setPrice(showSeatDto.getPriceForPremiumSeats());

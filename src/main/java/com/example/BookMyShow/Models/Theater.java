@@ -35,4 +35,5 @@ public class Theater {
 
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
     private List<Show> showList = new ArrayList<>();
+
 }

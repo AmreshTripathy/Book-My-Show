@@ -88,15 +88,16 @@ public class TicketService {
         userRepository.save(user);
         showRepository.save(show);
 
-        String body = "Hi " + user.getName()  + "! \n" +
+        String body = "Hi " + user.getName() + "! \n" +
                 "You have successfully booked a ticket. Please find the following details below.\n" +
-                "Booked Seat No. - " + String.valueOf(ticketRequestDto.getRequestedSeats()).replace("[", "").replace("]", "") +  "\n" +
+                "Booked Seat No. - " + String.valueOf(ticketRequestDto.getRequestedSeats()).replace("[", "").replace("]", "") + "\n" +
                 "Movie Name - " + show.getMovie().getMovieName() + "\n" +
                 "Show Date - " + show.getDate() + "\n" +
                 "Show Time - " + show.getTime() + "\n" +
                 "\n" +
                 "\n" +
-                "Enjoy The Show!!!";                ;
+                "Enjoy The Show!!!";
+        ;
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 

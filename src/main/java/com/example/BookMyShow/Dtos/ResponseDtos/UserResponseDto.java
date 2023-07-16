@@ -24,5 +24,6 @@ public class UserResponseDto {
     private String emailId;
 
     private String statusCode;
+
     private String statusMessage;
 }

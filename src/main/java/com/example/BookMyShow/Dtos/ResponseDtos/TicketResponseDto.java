@@ -34,4 +34,6 @@ public class TicketResponseDto {
 
     private int totalPrice;
 
+    private String responseMessage;
+
 }
