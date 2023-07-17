@@ -72,6 +72,7 @@ public class TheaterService {
 
             // Bidirectional mapping
             theaterSeatList.add(theaterSeat);
+
         }
 
         // No need to set theaterSeatList to theater because the address is same for both instance
