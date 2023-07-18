@@ -4,10 +4,7 @@ import com.example.BookMyShow.Dtos.RequestDtos.AddShowDto;
 import com.example.BookMyShow.Dtos.RequestDtos.ShowSeatDto;
 import com.example.BookMyShow.Services.ShowService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Amresh Tripathy
@@ -35,6 +32,15 @@ public class ShowController {
             return showService.associateShowSeats(showSeatDto);
         } catch (Exception ex) {
             ex.printStackTrace();
+            return ex.getMessage();
+        }
+    }
+
+    @GetMapping("/most-recommended-movie-name")
+    public String getMostRecommendedMovieName(@RequestBody AddShowDto addShowDto) {
+        try {
+            return showService.getMostRecommendedMovieName(addShowDto);
+        } catch (Exception ex) {
             return ex.getMessage();
         }
     }

@@ -14,6 +14,7 @@ import com.example.BookMyShow.Transformers.ShowTransformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -103,5 +104,15 @@ public class ShowService {
         showRepository.save(show);
 
         return "Show Seats has successfully added";
+    }
+
+    public String getMostRecommendedMovieName(AddShowDto addShowDto) throws Exception{
+        Integer movie_id = showRepository.getMostShowedMovie(addShowDto.getShowDate());
+        System.out.println(movie_id);
+
+        if (movie_id == null)
+            throw new Exception("No movie found");
+
+        return movieRepository.findById(movie_id).get().getMovieName();
     }
 }
